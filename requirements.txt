@@ -12,3 +12,6 @@ requests==2.18.4
 urllib3==1.24.2
 ldap3==2.5
 validate_email
+defusedxml==0.7.1 \
+    --hash=sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61
+    --hash=sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69
