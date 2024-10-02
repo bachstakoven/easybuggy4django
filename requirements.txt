@@ -12,3 +12,4 @@ requests==2.18.4
 urllib3==1.24.2
 ldap3==2.5
 validate_email
+defusedxml==0.7.1
