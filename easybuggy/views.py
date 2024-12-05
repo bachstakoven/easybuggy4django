@@ -279,7 +279,7 @@ def network_socket_leak(request):
     if ping_url is None:
         ping_url = request.scheme + "://localhost:" + request.META['SERVER_PORT'] + "/ping"
     try:
-        response = requests.get(ping_url)
+        response = requests.get(ping_url, timeout=60)
         # req = urllib.request.Request(ping_url, headers={'Connection': 'KeepAlive'})
         # res = urllib.request.urlopen(req)
         try:
