@@ -15,7 +15,6 @@ from time import sleep
 from validate_email import validate_email
 import numpy as np
 import psutil
-import requests
 from PIL import Image, ImageOps
 from django import forms
 from django.conf import settings
@@ -34,6 +33,7 @@ from ldap3.core.exceptions import LDAPExceptionError
 from .forms import UploadFileForm
 from .models import User
 from .uploadhandler import QuotaUploadHandler
+from security import safe_requests
 
 logger = logging.getLogger('easybuggy')
 
@@ -279,7 +279,7 @@ def network_socket_leak(request):
     if ping_url is None:
         ping_url = request.scheme + "://localhost:" + request.META['SERVER_PORT'] + "/ping"
     try:
-        response = requests.get(ping_url)
+        response = safe_requests.get(ping_url)
         # req = urllib.request.Request(ping_url, headers={'Connection': 'KeepAlive'})
         # res = urllib.request.urlopen(req)
         try:
