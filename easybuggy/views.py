@@ -34,6 +34,7 @@ from ldap3.core.exceptions import LDAPExceptionError
 from .forms import UploadFileForm
 from .models import User
 from .uploadhandler import QuotaUploadHandler
+import defusedxml.sax
 
 logger = logging.getLogger('easybuggy')
 
@@ -833,7 +834,7 @@ def xxe(request):
                     str_text = str_text + line.decode()
                 obj = MyObject()
                 parser = MyContentHandler(obj)
-                xml.sax.parseString(str_text, parser)
+                defusedxml.sax.parseString(str_text, parser)
                 d['results'] = parser.results
             else:
                 d['errmsg'] = _('msg.not.xml.file')
